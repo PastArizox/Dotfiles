@@ -250,6 +250,19 @@ bindsym $mod+Shift+Print exec grim -t png -l 9 -g "$(slurp)" $screenshot_dir/$sc
 # Color Picker
 bindsym $mod+Shift+p exec grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | wl-copy 
 
+#################
+# Customization #
+#################
+
+# client.<class> <border> <background> <text>
+
+client.focused            #FF7043  #4E2A2A  #FFFFFF
+client.focused_inactive   #FFB74D  #202124  #B0BEC5
+client.unfocused          #202124  #202124  #607D8B
+client.urgent             #D32F2F  #202124  #FFFFFF
+
+gaps inner 10
+
 #----------------------------------------------#
 
 # Set font
