@@ -1,0 +1,258 @@
+#################
+### Variables ###
+#################
+
+# Logo key
+set $mod Mod4
+
+# Home row direction keys
+set $left h
+set $down j
+set $up k
+set $right l
+
+set $term foot
+set $menu dmenu_path | dmenu | xargs swaymsg exec --
+
+set $screenshot_dir ~/Pictures/Screenshots
+set $screenshot_filename $(date +%Y-%m-%d_%H-%M-%S).png
+
+include /etc/sway/config-vars.d/*
+
+############################
+### Output configuration ###
+############################
+
+# Wallpaper on * output
+output * bg /usr/share/backgrounds/iceberg-minimalist_1920x1080.jpg fill
+
+# Monitors
+output eDP-1    res 1920x1080@60Hz  pos 0 0 
+output HDMI-A-1 res 1920x1080@75Hz  pos 1920 0
+
+##########################
+### Idle configuration ###
+##########################
+
+# Lock screen after 300 seconds of inactivity, then turn off display after another 300 seconds,
+# and turn screen back on when resumed. Screen locked before sleep
+# Not used
+# exec swayidle -w \
+#         timeout 300 'swaylock -f -c 000000' \
+#         timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+#         before-sleep 'swaylock -f -c 000000'
+
+###########################
+### Input configuration ###
+###########################
+
+# Read `man 5 sway-input` for more information about this section.
+
+# Base config
+input * {
+    xkb_layout "fr"
+    xkb_numlock enable
+}
+
+# Touchpad config
+input type:touchpad {
+    tap enabled
+    natural_scroll enabled
+}
+
+####################
+### Key bindings ###
+####################
+
+##########
+# Basics #
+##########
+
+    # Start a terminal
+    bindsym $mod+Return exec $term
+
+    # Kill focused window
+    bindsym $mod+Shift+q kill
+
+    # Start your launcher
+    bindsym $mod+d exec $menu
+
+    # Drag floating windows by holding down $mod and left mouse button.
+    # Resize them with right mouse button + $mod.
+    # Despite the name, also works for non-floating windows.
+    # Change normal to inverse to use left mouse button for resizing and right
+    # mouse button for dragging.
+    floating_modifier $mod normal
+
+    # Reload the configuration file
+    bindsym $mod+Shift+c reload
+
+    # Exit sway (logs you out of your Wayland session)
+    bindsym $mod+Shift+e exec 'swaymsg exit'
+
+    # Lock screen
+    bindsym $mod+c exec swaylock -e --config=$HOME/.config/swaylock/config
+
+    # Backlight control
+    bindsym F2 exec light -U 10
+    bindsym F3 exec light -A 10
+
+    # Audio control
+    bindsym F6 exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+    bindsym F7 exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+    bindsym F8 exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+
+    # Airplane mode toggle
+    bindsym F12 exec --no-startup-id ~/.config/sway/scripts/toggle_airplane_mode.sh
+
+    # Auto start apps
+    bindsym $mod+p exec --no-startup-id ~/.config/sway/scripts/auto_start_apps.sh
+
+#################
+# Moving around #
+#################
+
+    # Move your focus around
+    bindsym $mod+$left focus left
+    bindsym $mod+$down focus down
+    bindsym $mod+$up focus up
+    bindsym $mod+$right focus right
+
+    # Move the focused window with the same, but add Shift
+    bindsym $mod+Shift+$left move left
+    bindsym $mod+Shift+$down move down
+    bindsym $mod+Shift+$up move up
+    bindsym $mod+Shift+$right move right
+
+##############
+# Workspaces #
+##############
+
+    # Switch to workspace
+    bindsym $mod+1 workspace number 1
+    bindsym $mod+2 workspace number 2
+    bindsym $mod+3 workspace number 3
+    bindsym $mod+4 workspace number 4
+    bindsym $mod+5 workspace number 5
+
+    # Move focused container to workspace
+    bindsym $mod+Ctrl+1 move container to workspace number 1
+    bindsym $mod+Ctrl+2 move container to workspace number 2
+    bindsym $mod+Ctrl+3 move container to workspace number 3
+    bindsym $mod+Ctrl+4 move container to workspace number 4
+    bindsym $mod+Ctrl+5 move container to workspace number 5
+
+    # Apps Assignations
+    assign [title="Discord"] 3
+    assign [title="Spotify"] 4
+    assign [app_id="thunderbird"] 5
+
+    # Default workspace
+    workspace 1
+
+################
+# Layout stuff #
+################
+
+    # Split focus object horizontal
+    bindsym $mod+b splith
+    # Split focus object vertical
+    bindsym $mod+v splitv
+
+    # Switch the current container between different layout styles
+    bindsym $mod+s layout stacking
+    bindsym $mod+w layout tabbed
+    bindsym $mod+e layout toggle split
+
+    # Make the current focus fullscreen
+    bindsym $mod+f fullscreen
+
+    # Toggle the current focus between tiling and floating mode
+    bindsym $mod+Shift+space floating toggle
+
+    # Swap focus between the tiling area and the floating area
+    bindsym $mod+space focus mode_toggle
+
+    # Move focus to the parent container
+    bindsym $mod+a focus parent
+
+    # Move focus to the child container
+    bindsym $mod+Shift+a focus child
+
+##############
+# Scratchpad #
+##############
+
+    # Move the currently focused window to the scratchpad
+    bindsym $mod+Shift+minus move scratchpad
+
+    # Show the next scratchpad window or hide the focused scratchpad window.
+    bindsym $mod+minus scratchpad show
+
+#######################
+# Resizing containers #
+#######################
+
+    mode "resize" {
+        # shrink width
+        bindsym $left resize shrink width 20px
+        # grow height
+        bindsym $down resize grow height 20px
+        # shrink height
+        bindsym $up resize shrink height 20px
+        # grow width
+        bindsym $right resize grow width 20px
+
+        # Return to default mode
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+    }
+
+bindsym $mod+r mode "resize"
+
+##############
+# Status Bar #
+##############
+
+    bar {
+        id mainbar
+        swaybar_command waybar
+    }
+
+    # Start waybar
+    # exec waybar
+
+    # Reload waybar
+    # bindsym $mod+Shift+r exec pkill waybar && waybar &
+
+###########
+# Keyring #
+###########
+
+    # Start gnome keyring
+    exec --no-startup-id /usr/bin/gnome-keyring-daemon --components=secrets &
+    exec --no-startup-id dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS &
+
+##############
+# Screenshot #
+##############
+
+# Whole screen
+bindsym $mod+Print exec grim -t png -l 9 $screenshot_dir/$screenshot_filename && wl-copy < $screenshot_dir/$screenshot_filename
+
+# Slection only
+bindsym $mod+Shift+Print exec grim -t png -l 9 -g "$(slurp)" $screenshot_dir/$screenshot_filename && wl-copy < $screenshot_dir/$screenshot_filename
+
+#########
+# Other #
+#########
+
+# Color Picker
+bindsym $mod+Shift+p exec grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | wl-copy 
+
+#----------------------------------------------#
+
+# Set font
+font pango:JetBrains Regular Light 10
+
+include /etc/sway/config.d/*

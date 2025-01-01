@@ -1,0 +1,114 @@
+{
+    "position": "top",
+    "spacing": 5,
+    "name": "waybar",
+    "margin-bottom": 5,
+    "margin-left": 10,
+    "margin-right": 10,
+    "modules-left": [
+        "sway/workspaces",
+        "sway/scratchpad",
+        "sway/mode"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "memory",
+        "cpu",
+        "pulseaudio",
+        "network",
+        "bluetooth",
+        "battery"
+    ],
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "format": "{index}: {icon}",
+        "format-icons": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+            "5": ""
+        },
+        "persistent_workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": []
+        }
+    },
+    "sway/scratchpad": {
+        "format": "{icon} {count}",
+        "show-empty": false,
+        "format-icons": [
+            "",
+            ""
+        ],
+        "tooltip": true,
+        "tooltip-format": "{app}: {title}"
+    },
+    "clock": {
+        "format": "{:%H:%M - %Y-%m-%d}",
+        "format-alt": "{:%H:%M}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+    "cpu": {
+        "interval": 1,
+        "format": " {usage}%"
+    },
+    "memory": {
+        "interval": 1,
+        "format": " {percentage}%",
+        "format-alt": " {used}/{total} GiB",
+        "tooltip-format": "{used}/{total} GiB used"
+    },
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-bluetooth": "{icon} {volume}% ()",
+        "format-muted": "",
+        "format-icons": {
+            "headphones": "",
+            "handsfree": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": [
+                "",
+                ""
+            ]
+        },
+        "scroll-step": 1,
+        "on-click": "pavucontrol"
+    },
+    "network": {
+        "format": "{ifname}",
+        "format-wifi": " ({signalStrength}%)",
+        "format-ethernet": " {ifname}",
+        "format-disconnected": "",
+        "tooltip-format": "{ifname}",
+        "tooltip-format-wifi": " {essid} ({signalStrength}%)",
+        "tooltip-format-ethernet": " {ifname}",
+        "tooltip-format-disconnected": "Disconnected",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "max-length": 50
+    },
+    "bluetooth": {
+        "on-click": "foot -e bluetoothctl"
+    },
+    "battery": {
+        "format": "{icon} {capacity}%",
+        "format-charging": " {icon} {capacity}%",
+        "format-discharging": "{icon} {capacity}%",
+        "format-plugged": " {icon} {capacity}%",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
+    }
+}
