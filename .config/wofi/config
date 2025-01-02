@@ -1,0 +1,16 @@
+width=40%
+height=50%
+prompt=Select an app
+allow_images=true
+allow_markup=true
+term=foot
+lines=20
+gtk_dark=true
+image_size=24
+key_up=Control_L-k
+key_down=Control_L-j
+key_left=Control_L-h
+key_right=Control_L-l
+key_forward=Control_L-f
+key_backward=Control_L-b
+key_expand=Tab

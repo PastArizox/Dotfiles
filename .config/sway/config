@@ -12,7 +12,9 @@ set $up k
 set $right l
 
 set $term foot
-set $menu dmenu_path | dmenu | xargs swaymsg exec --
+# set $menu dmenu_path | dmenu | xargs swaymsg exec --
+set $menu wofi --show run
+set $menu2 wofi --show drun
 
 set $screenshot_dir ~/Pictures/Screenshots
 set $screenshot_filename $(date +%Y-%m-%d_%H-%M-%S).png
@@ -76,6 +78,7 @@ input type:touchpad {
 
     # Start your launcher
     bindsym $mod+d exec $menu
+    bindsym $mod+Shift+d exec $menu2
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -91,7 +94,7 @@ input type:touchpad {
     bindsym $mod+Shift+e exec 'swaymsg exit'
 
     # Lock screen
-    bindsym $mod+c exec swaylock -e --config=$HOME/.config/swaylock/config
+    bindsym $mod+c exec swaylock -e -F --config=$HOME/.config/swaylock/config
 
     # Backlight control
     bindsym F2 exec light -U 10
@@ -208,7 +211,7 @@ input type:touchpad {
         bindsym Escape mode "default"
     }
 
-bindsym $mod+r mode "resize"
+    bindsym $mod+r mode "resize"
 
 ##############
 # Status Bar #
