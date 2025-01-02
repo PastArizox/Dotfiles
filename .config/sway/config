@@ -241,7 +241,10 @@ input type:touchpad {
 ##############
 
 # Whole screen
-bindsym $mod+Print exec grim -t png -l 9 $screenshot_dir/$screenshot_filename && wl-copy < $screenshot_dir/$screenshot_filename
+bindsym Print exec grim -t png -l 9 $screenshot_dir/$screenshot_filename && wl-copy < $screenshot_dir/$screenshot_filename
+
+# Focused window only
+bindsym $mod+Print exec ~/.config/sway/scripts/screenshot.sh
 
 # Slection only
 bindsym $mod+Shift+Print exec grim -t png -l 9 -g "$(slurp)" $screenshot_dir/$screenshot_filename && wl-copy < $screenshot_dir/$screenshot_filename
