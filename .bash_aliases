@@ -30,8 +30,11 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
 # rsx
-alias myip='curl ifconfig.me'
+alias myip='~/Scripts/get-ip-and-location.sh'
 alias netstat='netstat -tuln'
+
+# Dotfiles git config
+alias config='/usr/bin/git --git-dir=/home/arizox/.cfg/ --work-tree=/home/arizox'
 
 # Other
 alias update='sudo apt update && sudo apt upgrade'
