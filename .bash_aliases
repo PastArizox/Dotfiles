@@ -22,6 +22,7 @@ alias gb='git branch'
 alias gpo='git push origin'
 alias gpl='git pull'
 alias grb='git rebase'
+alias start-agent='eval $(ssh-agent) && ssh-add ~/.ssh/id_rsa'
 
 # color
 alias ip='ip --color=auto'
