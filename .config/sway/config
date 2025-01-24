@@ -38,11 +38,10 @@ output HDMI-A-1 res 1920x1080@75Hz  pos 1920 0
 
 # Lock screen after 300 seconds of inactivity, then turn off display after another 300 seconds,
 # and turn screen back on when resumed. Screen locked before sleep
-# Not used
-# exec swayidle -w \
-#         timeout 300 'swaylock -f -c 000000' \
-#         timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-#         before-sleep 'swaylock -f -c 000000'
+exec swayidle -w \
+        timeout 300 'swaylock -f -c 000000' \
+        timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+        before-sleep 'swaylock -f -c 000000'
 
 ###########################
 ### Input configuration ###
@@ -97,16 +96,16 @@ input type:touchpad {
     bindsym $mod+c exec swaylock -e -F --config=$HOME/.config/swaylock/config
 
     # Backlight control
-    bindsym F2 exec light -U 10
-    bindsym F3 exec light -A 10
+    bindsym XF86MonBrightnessDown exec light -U 10
+    bindsym XF86MonBrightnessUp exec light -A 10
 
     # Audio control
-    bindsym F6 exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-    bindsym F7 exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-    bindsym F8 exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+    bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+    bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+    bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 
     # Airplane mode toggle
-    bindsym F12 exec --no-startup-id ~/.config/sway/scripts/toggle_airplane_mode.sh
+    # bindsym F12 exec --no-startup-id ~/.config/sway/scripts/toggle_airplane_mode.sh
 
     # Auto start apps
     bindsym $mod+p exec --no-startup-id ~/.config/sway/scripts/auto_start_apps.sh
@@ -138,7 +137,7 @@ input type:touchpad {
     bindsym $mod+apostrophe workspace number 4
     bindsym $mod+parenleft workspace number 5
     bindsym $mod+minus workspace number 6
-    # bindsym $mod+egrave workspace number 7
+    bindsym $mod+egrave workspace number 7
     # bindsym $mod+underscore workspace number 8
     # bindsym $mod+ccedilla workspace number 9
     bindsym $mod+agrave workspace number 10
