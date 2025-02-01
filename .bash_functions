@@ -33,11 +33,9 @@ function cl() {
 
 # Get branch name for PS1
 function git_branch() {
-    if [ -d .git ]; then
-        branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
-        if [ -n "$branch" ]; then
-            echo "-[$branch]"
-        fi
+    branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
+    if [ -n "$branch" ]; then
+        echo "-[$branch]"
     fi
 }
 

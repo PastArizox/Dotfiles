@@ -24,6 +24,8 @@ alias gpo='git push origin'
 alias gpl='git pull'
 alias grb='git rebase'
 alias start-agent='eval $(ssh-agent) && ssh-add ~/.ssh/id_rsa'
+alias gitconfigulille='git config --local user.email "bastien.marache.etu@univ-lille.fr" && git config --local user.name "Bastien Marache"'
+alias gitconfigperso='git config --local user.email "arizoxfr@gmail.com" && git config --local user.name "PastArizox"'
 
 # color
 alias ip='ip --color=auto'

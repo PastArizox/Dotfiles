@@ -38,10 +38,10 @@ output HDMI-A-1 res 1920x1080@75Hz  pos 1920 0
 
 # Lock screen after 300 seconds of inactivity, then turn off display after another 300 seconds,
 # and turn screen back on when resumed. Screen locked before sleep
-exec swayidle -w \
-        timeout 300 'swaylock -f -c 000000' \
-        timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-        before-sleep 'swaylock -f -c 000000'
+#exec swayidle -w \
+#        timeout 300 'swaylock -f -c 000000' \
+#        timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+#        before-sleep 'swaylock -f -c 000000'
 
 ###########################
 ### Input configuration ###
@@ -256,7 +256,8 @@ input type:touchpad {
 ###########
 
     # Start gnome keyring
-    exec --no-startup-id /usr/bin/gnome-keyring-daemon --components=secrets &
+    # exec --no-startup-id /usr/bin/gnome-keyring-daemon --components=secrets &
+    exec /usr/bin/gnome-keyring-daemon --daemonize --login
     exec --no-startup-id dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS &
 
 ##############
