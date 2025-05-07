@@ -1,14 +1,16 @@
 {
     "position": "top",
-    "spacing": 5,
     "name": "waybar",
-    "margin-bottom": 5,
+    "spacing": 5,
+    "margin-top": 5,
+    "margin-bottom": 2,
     "margin-left": 10,
     "margin-right": 10,
     "modules-left": [
         "sway/workspaces",
         "sway/scratchpad",
-        "sway/mode"
+        "sway/mode",
+        "custom/gif"
     ],
     "modules-center": [
         "clock"
@@ -31,7 +33,7 @@
             "4": "",
             "5": "",
             "6": "",
-	    "7": "",
+            "7": "",
             "10": ""
         },
         "persistent_workspaces": {
@@ -53,9 +55,9 @@
             "6": [
                 "eDP-1"
             ],
-	    "7": [
-		"eDP-1"
-	    ],
+            "7": [
+                "eDP-1"
+            ],
             "10": [
                 "HDMI-A-1"
             ]
@@ -133,5 +135,9 @@
             "",
             ""
         ]
+    },
+    "custom/gif": {
+        "exec": "~/.config/waybar/scripts/afficher_gif.sh",
+        "interval": 0
     }
 }

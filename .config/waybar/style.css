@@ -7,73 +7,29 @@
 
 .waybar {
     background-color: transparent;
-}
+}    
 
-#clock {
+#clock,
+#memory,
+#battery,
+#pulseaudio,
+#network,
+#cpu,
+#workspaces,
+#mode,
+#scratchpad,
+#bluetooth {
     background-color: #202124;
-    padding: 0 15px;
-    border-radius: 0 0px 15px 15px
-}
-
-#memory {
-    background-color: #202124;
-    padding: 0 15px;
-    border-radius: 0 0px 15px 15px
-}
-
-#battery {
-    background-color: #202124;
-    padding: 0 15px;
-    border-radius: 0 0px 15px 15px
-}
-
-#pulseaudio {
-    background-color: #202124;
-    padding: 0 15px;
-    border-radius: 0 0px 15px 15px
-}
-
-#network {
-    background-color: #202124;
-    padding: 0 15px;
-    border-radius: 0 0px 15px 15px
-}
-
-#cpu {
-    background-color: #202124;
-    padding: 0 15px;
-    border-radius: 0 0px 15px 15px
-}
-
-#workspaces {
-    background-color: #202124;
-    padding: 0 15px;
-    border-radius: 0 0px 15px 15px
-}
-
-#mode {
-    background-color: #202124;
-    padding: 0 15px;
-    border-radius: 0 0px 15px 15px
+    padding: 0px 15px;
+    border-radius: 10px;
+    border: 1px #FF7043 solid;
 }
 
 #workspaces button {
-    padding: 0 7px;
-    border-radius: 0;
+    padding: 0px 7px;
+    border-radius: 0px;
 }
 
 #workspaces button.focused {
-    box-shadow: inset 0 -3px #ffffff;
-}
-
-#scratchpad {
-    background-color: #202124;
-    padding: 0 15px;
-    border-radius: 0 0px 15px 15px
-}
-
-#bluetooth {
-    background-color: #202124;
-    padding: 0 15px;
-    border-radius: 0 0px 15px 15px
+    background-color: #4E2A2A;
 }

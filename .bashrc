@@ -42,3 +42,7 @@ fi
 if [ -e ~/.dircolors ]; then
     eval $(dircolors -b ~/.dircolors)
 fi
+
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)

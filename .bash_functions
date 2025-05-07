@@ -53,7 +53,7 @@ function from_hex() {
 }
 
 # Function to get video resolution
-resolution() {
+function resolution() {
   # Check if ffprobe is installed
   if ! command -v ffprobe &> /dev/null; then
     echo "ffprobe is not installed. Please install FFmpeg."
@@ -79,7 +79,7 @@ resolution() {
 }
 
 # Function to determine the quality of the video based on its resolution
-quality() {
+function quality() {
   # Check if ffprobe is installed
   if ! command -v ffprobe &> /dev/null; then
     echo "ffprobe is not installed. Please install FFmpeg."
@@ -119,4 +119,8 @@ quality() {
   fi
 
   echo $quality
+}
+
+function search() {
+    find . -iname "*$1*"
 }

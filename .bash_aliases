@@ -48,3 +48,4 @@ alias vi='vim'
 alias v='vim'
 alias mnt="mount | awk -F' ' '{ printf \"%s\t%s\n\",\$1,\$3; }' | column -t | egrep ^/dev/ | sort"
 alias cpv='rsync -ah --info=progress2'
+alias cat='batcat'
