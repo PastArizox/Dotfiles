@@ -1,0 +1,39 @@
+@import url("theme.css");
+
+* {
+    font-family: "JetBrainsMono Nerd Font", monospace;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+}
+
+.waybar {
+    background-color: transparent;
+}
+
+#clock,
+#memory,
+#battery,
+#pulseaudio,
+#network,
+#cpu,
+#workspaces,
+#mode,
+#scratchpad,
+#bluetooth {
+    padding: 0px 15px;
+    border: 1px #FF7043 solid;
+}
+
+#workspaces button {
+    font-weight: normal;
+    padding: 0px 7px;
+    border-radius: 0px;
+}
+
+tooltip {
+    border: 1px #FF7043 solid;
+    border-radius: 0px;
+    font-weight: normal;
+}
+

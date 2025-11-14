@@ -1,0 +1,24 @@
+* {
+    color: white;
+}
+
+#clock,
+#memory,
+#battery,
+#pulseaudio,
+#network,
+#cpu,
+#workspaces,
+#mode,
+#scratchpad,
+#bluetooth {
+    background-color: #202124;
+}
+
+#workspaces button.focused {
+    background-color: #4E2A2A;
+}
+
+tooltip {
+    background-color: #202124;
+}

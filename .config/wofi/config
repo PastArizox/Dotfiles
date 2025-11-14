@@ -1,0 +1,15 @@
+width=40%
+height=50%
+prompt=Select an app
+allow_images=true
+allow_markup=true
+term=alacritty
+lines=20
+image_size=24
+key_up=Ctrl-k
+key_down=Ctrl-j
+key_left=Ctrl-h
+key_right=Ctrl-l
+key_forward=Ctrl-f
+key_backward=Ctrl-b
+key_expand=Tab

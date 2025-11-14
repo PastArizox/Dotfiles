@@ -1,0 +1,298 @@
+#################
+### Variables ###
+#################
+
+# Logo key
+set $mod Mod4
+
+# Home row direction keys
+set $left h
+set $down j
+set $up k
+set $right l
+
+set $term alacritty
+set $menu wofi --show run
+set $menu2 wofi --show drun
+
+set $screenshot_dir ~/Pictures/Screenshots
+set $screenshot_filename $(date +%Y-%m-%d_%H-%M-%S).png
+
+include /etc/sway/config-vars.d/*
+include ~/.config/sway/theme.conf
+
+############################
+### Output configuration ###
+############################
+
+# Wallpaper handled by theme script
+
+# Monitors
+output eDP-1    res 1920x1200@60Hz  pos 0 0
+#output HDMI-A-1 res 1280x720@30Hz pos 1920 0
+output HDMI-A-1 res 1920x1080@75Hz  pos 1920 0
+
+##########################
+### Idle configuration ###
+##########################
+
+bindsym XF86Sleep exec "~/.config/sway/scripts/lock.sh & sleep 3 && systemctl suspend"
+
+###########################
+### Input configuration ###
+###########################
+
+# Read `man 5 sway-input` for more information about this section.
+
+# Base config
+input * {
+    xkb_layout "fr"
+    xkb_numlock enable
+}
+
+# Touchpad config
+input type:touchpad {
+    tap enabled
+    natural_scroll enabled
+}
+
+# Trackpoint config
+input "2:10:TPPS/2_Elan_TrackPoint" {
+    pointer_accel -0.2
+    accel_profile adaptive
+}
+
+####################
+### Key bindings ###
+####################
+
+##########
+# Basics #
+##########
+
+# Start a terminal
+bindsym $mod+Return exec $term
+
+# Kill focused window
+bindsym $mod+Shift+q kill
+
+# Start your launcher
+bindsym $mod+d exec $menu
+bindsym $mod+Shift+d exec $menu2
+
+# Drag floating windows by holding down $mod and left mouse button.
+# Resize them with right mouse button + $mod.
+# Despite the name, also works for non-floating windows.
+# Change normal to inverse to use left mouse button for resizing and right
+# mouse button for dragging.
+floating_modifier $mod normal
+
+# Reload the configuration file
+bindsym $mod+Shift+c reload
+
+# Exit sway (logs you out of your Wayland session)
+bindsym $mod+Shift+e exec 'swaymsg exit'
+
+# Lock screen
+bindsym $mod+c exec ~/.config/sway/scripts/lock.sh
+
+# Backlight control
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+
+# Audio control
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+# bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym XF86AudioMicMute exec ~/.config/sway/scripts/toggle-mic.sh
+
+# Auto start apps
+bindsym $mod+p exec --no-startup-id ~/.config/sway/scripts/auto_start_apps.sh
+
+#################
+# Moving around #
+#################
+
+# Move your focus around
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+
+# Move the focused window with the same, but add Shift
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+
+##############
+# Workspaces #
+##############
+
+# Switch to workspace
+bindsym $mod+ampersand workspace number 1
+bindsym $mod+eacute workspace number 2
+bindsym $mod+quotedbl workspace number 3
+bindsym $mod+apostrophe workspace number 4
+bindsym $mod+parenleft workspace number 5
+bindsym $mod+minus workspace number 6
+bindsym $mod+egrave workspace number 7
+# bindsym $mod+underscore workspace number 8
+# bindsym $mod+ccedilla workspace number 9
+bindsym $mod+agrave workspace number 10
+
+# Move focused container to workspace
+bindsym $mod+1 move container to workspace number 1
+bindsym $mod+2 move container to workspace number 2
+bindsym $mod+3 move container to workspace number 3
+bindsym $mod+4 move container to workspace number 4
+bindsym $mod+5 move container to workspace number 5
+bindsym $mod+6 move container to workspace number 6
+bindsym $mod+7 move container to workspace number 7
+bindsym $mod+0 move container to workspace number 10
+
+# Apps Assignations
+assign [title="Discord"] 3
+assign [title="Spotify"] 4
+assign [app_id="thunderbird"] 5
+assign [class="qBittorrent"] 6
+
+# assign workspaces to ouputs
+workspace 1 output eDP-1
+workspace 2 output eDP-1
+workspace 3 output eDP-1
+workspace 4 output eDP-1
+workspace 5 output eDP-1
+workspace 6 output eDP-1
+workspace 7 output eDP-1
+workspace 10 output HDMI-A-1
+
+# Default workspace
+workspace 1
+
+################
+# Layout stuff #
+################
+
+# Split focus object horizontal
+bindsym $mod+b splith
+# Split focus object vertical
+bindsym $mod+v splitv
+
+# Switch the current container between different layout styles
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# Make the current focus fullscreen
+bindsym $mod+f fullscreen
+
+# Toggle the current focus between tiling and floating mode
+bindsym $mod+Shift+space floating toggle
+
+# Swap focus between the tiling area and the floating area
+bindsym $mod+space focus mode_toggle
+
+# Move focus to the parent container
+bindsym $mod+a focus parent
+
+# Move focus to the child container
+bindsym $mod+Shift+a focus child
+
+##############
+# Scratchpad #
+##############
+
+# Move the currently focused window to the scratchpad
+bindsym $mod+Shift+g move scratchpad
+
+# Show the next scratchpad window or hide the focused scratchpad window.
+bindsym $mod+g scratchpad show
+
+#######################
+# Resizing containers #
+#######################
+
+mode "resize" {
+    # shrink width
+    bindsym $left resize shrink width 20px
+    # grow height
+    bindsym $down resize grow height 20px
+    # shrink height
+    bindsym $up resize shrink height 20px
+    # grow width
+    bindsym $right resize grow width 20px
+
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+##############
+# Status Bar #
+##############
+
+bar {
+    id mainbar
+    swaybar_command waybar
+}
+
+bindsym $mod+Shift+w exec ~/.config/sway/scripts/toggle_waybar.sh
+
+#############
+# SSH-agent #
+#############
+
+#exec eval $(ssh-agent)
+
+##############
+# Screenshot #
+##############
+
+# Whole screen
+#bindsym Print exec grim -t png -l 9 $screenshot_dir/$screenshot_filename && wl-copy < $screenshot_dir/$screenshot_filename
+bindsym Print exec grim -t png -l 9 $screenshot_dir/$screenshot_filename && wl-copy < $screenshot_dir/$screenshot_filename && notify-send "Capture d'écran" "La capture d'écran a été enregistrée et copiée dans le presse-papiers." -i "$screenshot_dir/$screenshot_filename"
+
+# Focused window only
+bindsym Shift+Print exec ~/.config/sway/scripts/window_screenshot.sh
+
+# Slection only
+bindsym XF86SelectiveScreenshot exec grim -t png -l 9 -g "$(slurp)" $screenshot_dir/$screenshot_filename && wl-copy < $screenshot_dir/$screenshot_filename
+
+#########
+# Other #
+#########
+
+# Color Picker
+bindsym $mod+Shift+p exec grim -g "$(slurp -p)" -t ppm - | magick - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | wl-copy
+
+# Theme toggle
+bindsym $mod+F5 exec ~/.local/bin/theme-toggle.sh
+
+################
+# Notification #
+################
+
+# Run notification tool
+exec mako
+
+################
+# Customization #
+#################
+
+gaps inner 5
+
+#----------------------------------------------#
+
+# Set font
+#font pango:JetBrains Mono Light 10
+font pango:"JetBrains Mono Nerd Font" 10
+#font pango:JetBrainsMono Nerd Font 10
+
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
+exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
+
+bindsym $mod+Shift+v exec ~/.config/sway/scripts/whisper-dictate.sh

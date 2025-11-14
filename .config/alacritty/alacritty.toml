@@ -1,0 +1,2 @@
+[general]
+import = ["/home/arizox/.config/alacritty/theme.toml"]
