@@ -7,6 +7,13 @@
 
 PS1='(\u@\h)-[\w]$(git_branch)\n\$ '
 
+if [[ $PS1 && -f /usr/share/bash-completion/bash_completion ]]; then
+    . /usr/share/bash-completion/bash_completion
+fi
+
+bind '"\e[A": history-search-backward'
+bind '"\e[B": history-search-forward'
+
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
