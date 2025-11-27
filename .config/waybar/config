@@ -1,4 +1,6 @@
 {
+    "bar_id": "mainbar",
+    "ipc": true,
     "position": "top",
     "name": "waybar",
     "spacing": 5,
