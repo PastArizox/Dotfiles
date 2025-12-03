@@ -1,0 +1,5 @@
+gui:
+  theme:
+    activeBorderColor:
+      - '#FF7043'
+      - bold
