@@ -1,3 +1,6 @@
+# sway
+alias s='exec sway'
+
 # move
 alias ..='cd ..'
 alias ...='cd ../..'
