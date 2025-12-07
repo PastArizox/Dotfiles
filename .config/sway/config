@@ -54,7 +54,7 @@ output HDMI-A-1 res 1920x1080@75Hz  pos 1920 0
 ### Idle configuration ###
 ##########################
 
-bindsym XF86Sleep exec "~/.config/sway/scripts/lock.sh & sleep 3 && systemctl suspend"
+bindsym XF86Sleep exec "~/.config/sway/scripts/lock-screen.sh & sleep 3 && systemctl suspend"
 
 ###########################
 ### Input configuration ###
