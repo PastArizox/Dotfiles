@@ -47,8 +47,8 @@ set $color_picker ~/.config/sway/scripts/color-picker.sh
 
 # Monitors
 output eDP-1    res 1920x1200@60Hz  pos 0 0
-#output HDMI-A-1 res 1280x720@30Hz pos 1920 0
-output HDMI-A-1 res 1920x1080@75Hz  pos 1920 0
+#output HDMI-A-1 res 1920x1080@75Hz  pos 1920 0
+output HDMI-A-1 res 1920x1080@60Hz pos 0 -1080
 
 ##########################
 ### Idle configuration ###
