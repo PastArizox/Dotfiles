@@ -170,10 +170,10 @@ bindsym $mod+7 move container to workspace number 7
 bindsym $mod+0 move container to workspace number 10
 
 # Apps Assignations
-assign [title="Discord"] 3
-assign [title="Spotify"] 4
+assign [app_id="discord"] 3
+assign [app_id="spotify"] 4
 assign [app_id="org.mozilla.Thunderbird"] 5
-assign [class="qBittorrent"] 6
+assign [app_id="obsidian"] 6
 
 # assign workspaces to ouputs
 workspace 1 output eDP-1
@@ -317,6 +317,7 @@ exec_always gammastep
 font pango:"JetBrains Mono Nerd Font" 10
 #font pango:JetBrainsMono Nerd Font 10
 
-exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
-exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
+# Discord screenshare fix
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 
