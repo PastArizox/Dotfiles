@@ -50,3 +50,4 @@ alias v='vim'
 alias mnt="mount | awk -F' ' '{ printf \"%s\t%s\n\",\$1,\$3; }' | column -t | grep -E ^/dev/ | sort"
 alias cpv='rsync -ah --info=progress2'
 alias cat='bat'
+alias r='ranger'
