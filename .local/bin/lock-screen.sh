@@ -1,5 +1,9 @@
 #!/bin/bash
 
+if pgrep -x swaylock >/dev/null 2>&1; then
+    exit 0
+fi
+
 # ===========================================
 #             CONFIGURATION
 # ===========================================
