@@ -38,6 +38,9 @@ ln -sf "$THEME_DIR/$NEW_MODE/wofi.css" "$HOME/.config/wofi/style.css"
 # Apply alacritty theme
 ln -sf "$THEME_DIR/$NEW_MODE/alacritty.toml" "$HOME/.config/alacritty/theme.toml"
 
+# Apply bat theme
+ln -sf "$THEME_DIR/$NEW_MODE/bat" "$HOME/.config/bat/config"
+
 # Apply sway theme
 ln -sf "$THEME_DIR/$NEW_MODE/sway.conf" "$HOME/.config/sway/theme.conf"
 
