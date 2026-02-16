@@ -22,3 +22,18 @@
 tooltip {
     background-color: #ffffff;
 }
+
+@keyframes blink {
+    to {
+        background-color: #FF7043;
+    }
+}
+
+#battery.critical:not(.charging) {
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
