@@ -34,6 +34,7 @@ set $screenshot_window ~/.config/sway/scripts/screenshot-window.sh
 set $screenshot_area ~/.config/sway/scripts/screenshot-area.sh
 
 set $lock_screen ~/.local/bin/lock-screen.sh
+set $change_window ~/.local/bin/change_window.sh
 
 set $mic_toggle ~/.config/sway/scripts/mic-toggle.sh
 
@@ -100,6 +101,9 @@ bindsym $mod+Shift+q kill
 # Start your launcher
 bindsym $mod+d exec $menu
 bindsym $mod+Shift+d exec $menu2
+
+# Change window
+bindsym $mod+Shift+m exec $change_window
 
 # Drag floating windows by holding down $mod and left mouse button.
 # Resize them with right mouse button + $mod.
