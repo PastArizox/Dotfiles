@@ -192,6 +192,7 @@ workspace 5 output eDP-1
 workspace 6 output eDP-1
 workspace 7 output eDP-1
 workspace 10 output HDMI-A-1
+workspace 10 output DP-1
 
 # Default workspace
 workspace 1
